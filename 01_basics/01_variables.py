@@ -1,56 +1,67 @@
-name = "김동주"
+"""
+    변수와 자료형
+"""
+
+# 동적 타입 => 타입 선언 생략
+name = "임수진"
 age = 20
-height = 171.5
-is_tired=True
-temp=None
+height = 162.7
+is_tired = True   # False
+temp = None       # java 에서 null과 동일
 
-print(name,age,height,is_tired,temp)
+print(name, age, height, is_tired, temp)
 
-print("="*60)
+print("=" * 60)
+print("기본 자료형 5가지")
+print("=" * 60)
+# 변수에 저장된 데이터 타입 확인 => type(변수)
+print(f"{name} : {type(name)}")
+print(f"{age} : {type(age)}")
+print(f"{height} : {type(height)}")
+print(f"{is_tired} : {type(is_tired)}")
+print(f"{temp} : {type(temp)}")
 
-print(f"{name}:{type(name)}")
-print(f"{age}:{type(age)}")
-print(f"{height}:{type(height)}")
-print(f"{is_tired}:{type(is_tired)}")
-print(f"{temp}:{type(temp)}")
-
-print("="*60)
+print("=" * 60)
 
 value = 27
-print(f"value:{value}, type:{type(value)}")
-value="스물일곱"
-print(f"value:{value}, type:{type(value)}")
+print(f"{value} : {type(value)}")
+value = "스물일곱"
+print(f"{value} : {type(value)}")
 
-print("="*60)
+# 이전에 저장한 타입과 이후에 저장한 타입이 달라도 저장 가능
+# --> 혼란을 방지하기 위해 하나의 변수에는 하나의 타입만 사용 (권장)
 
-x,y,z=10,20,30
-print(f"x,y,z -> {x},{y},{z}")
+print("=" * 60)
 
-a=b=c=0
-print(f"a,b,c -> {a},{b},{c}")
+# 다중 할당
+x, y, z = 10, 20, 30
+print(f"x, y, z -> {x}, {y}, {z}")
 
-x,y=y,x
-print(f"x,y -> {x},{y}")
+a = b = c = 0
+print(f"a = b = c -> {a}, {b}, {c}")
 
-print("="*60)
+# 값 교환
+x, y = y, x
+print(f"x, y ->{x} {y}")
 
-menu : str = "제육"
-print(f"menu: {menu}, type: {type(menu)}")
+print("=" * 60)
 
-price: int = "11000"
-print(f"price: {price}, type: {type(price)}")
+# 타입 힌트
+menu: str = "해장국"
+print(f"menu : {menu} ({type(menu)})")
 
-print("="*60)
+price: int = "12000원"
+print(f"price : {price} ({type(price)})")
 
+# 타입 힌트는 강제성 없으며 에러도 발생되지 않음!
+
+print("=" * 60)
+# 상수 -> 대문자로 변수를 작성하는 것을 약속(관례). final 키워드 x
+
+# 최대 인원: 60 이라는 값을 저장
 MAX_PERSON = 60
-print(f"최대 인원 : {MAX_PERSON}")
+print(f"최대 인원: {MAX_PERSON}")
 
 
-
-
-
-
-
-
-
-
+# MAX_PERSON = 1
+# print(f"최대 인원: {MAX_PERSON}")
