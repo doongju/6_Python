@@ -32,7 +32,7 @@ def load_csv(dedup=True):
     return df.sort_values(["code", "date"]).reset_index(drop=True)
 
 def load_prices():
-    return pd.read_csv(path('prices.csv'),encoding=ENCODING)
+    return pd.read_csv(path('prices.csv'),encoding=ENCODING, parse_dates=["date"])
 
 def load_companies(raw=False):
     """
@@ -47,3 +47,19 @@ def load_companies(raw=False):
                     dtype=str, keep_default_na=False)
 
     return pd.read_csv(path('companies.csv'), encoding=ENCODING)
+
+def load_sectors():
+    return pd.read_csv(path('sectors.csv'), encoding=ENCODING)
+
+def load_merged():
+    prices = load_prices()
+    compaines = load_companies()
+    sectors = load_sectors().rename(columns={"code": "sectorCode", "name" : "sector"})
+
+    full = (prices
+    .merge(compaines[["code","name","sectorCode","market"]],
+                on="code", how="left",validate="many_to_one")
+    .merge(sectors[["sectorCode","sector"]],
+           on="sectorCode" , how="left",validate="many_to_one")
+    )
+    return full.drop(columns=["sectorCode"]).sort_values(["code","date"]).reset_index(drop=True)
